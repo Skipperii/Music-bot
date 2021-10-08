@@ -16,14 +16,14 @@ module.exports = (client, message) => {
         const roleDJ = message.guild.roles.cache.find(x => x.name === DJ.roleName);
 
         if (!message.member._roles.includes(roleDJ.id)) {
-            return message.channel.send(`This command is reserved for members with the ${DJ.roleName} role on the server ${message.author}... try again ? ❌`);
+            return message.channel.send(`hommaa ${DJ.roleName} rooli ${message.author}sissa`);
         }
     }
 
     if (cmd && cmd.voiceChannel) {
-        if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${message.author}... try again ? ❌`);
+        if (!message.member.voice.channel) return message.channel.send(`Kanavalle tahvo ${message.author}`);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`You are not in the same voice channel ${message.author}... try again ? ❌`);
+        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`Väärä kannu ${message.author}`);
     }
 
     if (cmd) cmd.execute(client, message, args);

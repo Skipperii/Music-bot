@@ -7,14 +7,14 @@ module.exports = {
     voiceChannel: true,
 
     async execute(client, message, args) {
-        if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
+        if (!args[0]) return message.channel.send(`nt ${message.author}`);
 
         const res = await player.search(args.join(' '), {
             requestedBy: message.member,
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
+        if (!res || !res.tracks.length) return message.channel.send(`Ei löytyny biisiä:  ${message.author}`);
 
         const queue = await player.createQueue(message.guild, {
             metadata: message.channel
@@ -24,7 +24,7 @@ module.exports = {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {
             await player.deleteQueue(message.guild.id);
-            return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
+            return message.channel.send(`En voi liittyy kanavalle ${message.author}`);
         }
 
         //await message.channel.send(`Loading your ${res.playlist ? 'playlist' : 'track'}... 🎧`);
