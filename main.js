@@ -10,6 +10,17 @@ global.client = new Client({
     ],
     disableMentions: 'everyone',
 });
+app.set("port", process.env.PORT || 3000);
+app.set("host", process.env.HOST || "localhost");
+
+app.listen(app.get("port"), function() {
+  console.log(
+   "%s server listening at http://%s:%s",
+    process.env.NODE_ENV,
+   app.get("host"),
+   app.get("port")
+  );
+});
 
 client.config = require('./config');
 
