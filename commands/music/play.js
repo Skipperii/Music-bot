@@ -1,5 +1,6 @@
 const { QueryType } = require('discord-player');
 
+
 module.exports = {
     name: 'play',
     aliases: ['p'],
@@ -15,11 +16,21 @@ module.exports = {
         });
 
         if (!res || !res.tracks.length) return message.channel.send(`Ei löytyny biisiä:  ${message.author}`);
-
+// sama
+        /* TÄÄ TOIMII
         const queue = await player.createQueue(message.guild, {
             metadata: message.channel
-        });
-
+        });*/
+        const queue = await player.createQueue(message.guild, {
+			ytdlOptions: {
+				quality: "highest",
+				filter: "audioonly",
+				highWaterMark: 1 << 25,
+				dlChunkSize: 0,
+			},
+			metadata: message.channel
+		});
+// sama
         try {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {

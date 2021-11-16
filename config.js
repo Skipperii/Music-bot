@@ -1,9 +1,10 @@
 module.exports = {
     app: {
         px: '-',
-        token: 'ODgyOTU5MDQwMzI0NDM1OTY5.YTC9rw.TbA40ThVQLs_RBjkM3-XK8ghJ4I',
+        token: 'ODgyOTU5MDQwMzI0NDM1OTY5.YTC9rw.5G2unv7bOFvuRq-NaDUorMr4a-M',
         playing: ' '
     },
+    
 
     opt: {
         DJ: {
@@ -13,6 +14,13 @@ module.exports = {
         },
         maxVol: 100,
         loopMessage: false,
-        discordPlayer: {}
+        
+        discordPlayer: {
+            leaveOnEnd: false,
+            leaveOnStop: false,
+            leaveOnEmpty: false,
+            leaveOnEmptyCooldown: 30000,
+            autoSelfDeaf: true}
+        
     }
 };
